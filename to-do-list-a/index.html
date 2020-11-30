@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Do It</title>
+        <link rel="stylesheet" href="main.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        
+
+    </head>
+    <body>
+        <div id="container">
+            <h2>To Do List</h2>
+            <button class="btn btn-primary" id="btnAddProject">Add Project</button>
+            <div id="projects">
+                <ul id="main">
+                    <li><a href="#personal">Personal</a></li>
+                    <li><a href="#work">Work</a></li>
+                </ul>
+                <ol id="personal">
+                    <li><input type="checkbox">Doctor Appointment</li>
+                    <li><input type="checkbox">Call The Plumber</li>
+                </ol>
+                <ol id="work">
+                    <li><input type="checkbox">Complete Test Cade Document</li>
+                    <li><input type="checkbox">Meet Project Manager</li>
+                    <li><input type="checkbox">Record Jquery Video</li>
+                </ol>
+            </div>
+
+            <button id="btnAddTask">Add Task</button>
+           
+            <div id="project-dialog" title="Add a project" style="display: none;">
+                <label for="new-project">Project Name:</label><input id="new-project" type="text">
+            </div>
+
+            <div id="task-dialog" title="Add a task" style="display: none;">
+                <label for="new-task">Task Name:</label><input id="new-task" type="text">
+            </div>
+
+        </div>
+<script src="main.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" ></script>
+    </body>   
+</html>
