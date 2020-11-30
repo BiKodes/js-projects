@@ -1,7 +1,13 @@
              $(document).ready(function(){
+                 $("input[type=checkbox]").removeAttr("checked");
                 $("projects").tabs();
                 $("ul").sortable({axis:"x", containment:"#projects"});
                 $("ol").sortable({axis:"y", containment: "#projects"});
+                $("#projects").on("click", "input[type=checkbox]",function(){
+                    $(this).closest("li").slideUp(function(){
+                        $(this).remove();
+                    })
+                });
                 $("#btnAddTask").button()
                 .click(function(){
                     $("task-dialog").dialog({width:400, resizable:false, modal:true,
