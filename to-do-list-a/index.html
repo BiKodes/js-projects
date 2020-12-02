@@ -2,21 +2,20 @@
 <html>
     <head>
         <title>Do It</title>
-        <link rel="stylesheet" href="main.css">
+        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        
+        <link rel="stylesheet" href="main.css">
 
     </head>
     <body>
         <div id="container">
             <h2>To Do List</h2>
-            <button class="btn btn-primary" id="btnAddProject">Add Project</button>
+            <button class="btn" id="btnAddProject">Add Project</button>
             <div id="projects">
                 <ul id="main">
-                    <li><a href="#personal">Personal</a></li>
-                    <li><a href="#work">Work</a></li>
+                    <li><a href="#personal">Personal</a><span class="ui-icon ui-icon-close"></span></li>
+                    <li><a href="#work">Work</a><span class="ui-icon ui-icon-close"></span></li>
                 </ul>
                 <ol id="personal">
                     <li><input type="checkbox">Doctor Appointment</li>
@@ -40,8 +39,9 @@
             </div>
 
         </div>
-<script src="main.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" ></script>
+<script src="main.js"></script>
     </body>   
 </html>

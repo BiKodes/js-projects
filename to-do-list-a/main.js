@@ -29,6 +29,14 @@
                     })
                 });
 
+                $("projects").on("click", "span.ui-icon-close", function(){
+                    var index = $(this).closest("li").index();
+                    var id = $("#main li:eq(" + index + ") a").attr("href");
+                    $("#main li:eq(" + index + ") a").remove();
+                    $(id).remove();
+                    $("#projects").tabs("refresh");
+                });
+
                 $("#btnAddProject").button()
                 .click(function(){
                     $("#project-dialog").dialog({width:400, resizable:false, modal:true,
@@ -36,7 +44,7 @@
                         "Add new project":function(){
                             var projectName = $("#new-project").val();
                             var replaceName = projectName.split(" ").join("_");
-                            $("<li><a href='#" + replaceName +"'>" + projectName + "</a></li>")
+                            $("<li><a href='#" + replaceName +"'>" + projectName + "</a><span class='ui-icon ui-icon-close'></span></li>")
                             .appendTo("#main");
 
                             $("<ol id='" + replaceName + "'></ol>").appendTo("#projects").sortable();

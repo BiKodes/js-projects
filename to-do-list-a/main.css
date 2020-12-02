@@ -39,3 +39,8 @@ ol li:hover
     margin-top: 20px;
 
 }
+.ui-icon-close
+{
+    transform: _scale(1.5);
+    cursor: pointer;
+}
