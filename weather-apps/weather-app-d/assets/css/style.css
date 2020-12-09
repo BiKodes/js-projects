@@ -116,3 +116,7 @@ form input::placeholder
     margin: 10px 0;
     font-size: 20px;
 }
+.query
+{
+    margin-top: 20px;
+}
