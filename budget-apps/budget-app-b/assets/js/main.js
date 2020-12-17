@@ -9,7 +9,7 @@ const itemCtrl = (function(){
     }
     // Data Structure
     const data = {
-        items: []
+        items:[]
     }
     // Public Method
     return{
@@ -70,7 +70,7 @@ const UICtrl = (function(){
         incomeList: '#income__container',
         expensesList: '#expenses__container',
         incomeItem: '.income__amount',
-        expenseItem: 'expense__amount',
+        expenseItem: '.expense__amount',
         itemsContainer: '.items__container'
 
     }
@@ -81,7 +81,7 @@ const UICtrl = (function(){
         getSelectors: function(){
             return UISelectors
         },
-        getDescritptionInput: function(){
+        getDescriptionInput: function(){
             return {
                 descriptionInput: document.querySelector(UISelectors.description).value
             }
@@ -118,7 +118,7 @@ const UICtrl = (function(){
         },
         updateEarned: function(){
             // All Income Elements
-            const allIncome = documents.querySelectorAll(UISelectors.incomeItem);
+            const allIncome = document.querySelectorAll(UISelectors.incomeItem);
             // Array With All Incomes
             const incomeCount = [...allIncome].map(item => + item.innerHTML);
             // Calculate The Total Earned
@@ -154,19 +154,19 @@ const UICtrl = (function(){
             // All Expenses Elements
             const allExpenses = document.querySelectorAll(UISelectors.expenseItem);
             // Array With All Expenses
-            const expenseCount = [...allExpenses].map(item => +item.innerHTML)
+            const expenseCount = [...allExpenses].map(item => +item.innerHTML);
             // Calculate The Total
             const expenseSum = expenseCount.reduce(function(a, b){
-                return a + b
+                return a+b
             },0)
             // Display The Total Spent
-            const expenseTotal = document.querySelector(UISelectors.moneySpent).innerHTML = expenseSum;
+            const expensesTotal = document.querySelector(UISelectors.moneySpent).innerHTML = expenseSum;
         },
         updateAvailable: function(){
             const earned = document.querySelector(UISelectors.moneyEarned);
             const spent = document.querySelector(UISelectors.moneySpent);
             const available = document.querySelector(UISelectors.moneyAvailable);
-            available.innerHTML = ((+earned.innerHTML) - (+spent.innerHTML)).toFixed(2)
+            available.innerHTML = ((+earned.innerHTML)-(+spent.innerHTML)).toFixed(2)
         },
 
         deleteAmount:function(id){
@@ -180,3 +180,88 @@ const UICtrl = (function(){
         }
     }
 })();
+
+// App Controller
+const App = (function(){
+    // Event Listeners
+    const loadEventListeners = function(){
+        // Get ui Selectors
+        const UISelectors = UICtrl.getSelectors();
+        // Add New Income
+        document.querySelector(UISelectors.incomeBtn).addEventListener('click', addIncome);
+        // Add New Expense
+        document.querySelector(UISelectors.expenseBtn).addEventListener('click', addExpense);
+        // Delete Item
+        document.querySelector(UISelectors.itemsContainer).addEventListener('click', deleteItem);
+    }
+
+    // Add New Income
+    const addIncome = function(){
+        // Get Description And Amount Values
+        const description = UICtrl.getDescriptionInput();
+        const amount = UICtrl.getValueInput();
+
+        // If Inputs Are Not Empty
+        if(description.descriptionInput !== '' && amount.amountInput !== ''){
+            // Add New Item
+            const newMoney = itemCtrl.addMoney(description.descriptionInput, amount.amountInput);
+            // Add Item To The List
+            UICtrl.addIncomeItem(newMoney);
+            // Clear Inputs
+            UICtrl.clearInputs();
+            // Update Earned
+            UICtrl.updateEarned();
+            // Calculate Money Available
+            UICtrl.updateAvailable();
+        }
+    }
+
+    // Add New Expense
+    const addExpense = function(){
+        // Get Description And Amount Values
+        const description = UICtrl.getDescriptionInput();
+        const amount = UICtrl.getValueInput();
+        // If Inputs Are Not Empty
+        if(description.descriptionInput !== '' && amount.amountInput !== ''){
+            // Add New Item
+            const newMoney = itemCtrl.addMoney(description.descriptionInput, amount.amountInput);
+            // Add Item To The List
+            UICtrl.addExpenseItem(newMoney);
+            // Clear Inputs
+            UICtrl.clearInputs();
+            // Update Total Spent
+            UICtrl.updateSpent();
+            // Calculate Money Available
+            UICtrl.updateAvailable();
+        }
+    }
+
+    // Delete Item
+    const deleteItem = function(e){
+        if(e.target.classList.contains('far')){
+            // Get Id Number
+            const id = itemCtrl.getIdNumber(e.target)
+            // Delete Amount From ui
+            UICtrl.deleteAmount(id);
+            // Delete Amount From Data
+            itemCtrl.deleteAmountArr(id);
+            // Update Earned
+            UICtrl.updateEarned();
+            // Update Total Spent
+            UICtrl.updateSpent();
+            // Calculate Money Available
+            UICtrl.updateAvailable();
+        }
+
+        e.preventDefault()
+    }
+
+    // Init Function
+    return {
+        init: function(){
+            loadEventListeners();
+        }
+    }
+}) (itemCtrl, UICtrl);
+
+App.init();

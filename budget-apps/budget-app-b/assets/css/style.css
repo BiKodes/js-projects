@@ -154,7 +154,7 @@ body
     color: var(--red);
 }
 
-.item .far
+.item .fa
 {
     position: absolute;
     top: 0;
@@ -172,7 +172,7 @@ body
     transform: translateX(30px);
     opacity: 0;
 }
-.item:hover .far
+.item:hover .fa
 {
     animation: showDelete;
     animation-duration: 0.5s;
