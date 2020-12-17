@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href=" 	https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <title>Budget App</title>
+</head>
+<body>
+    <div class="container">
+        <div class="budget__numbers">
+        <div class="number" id="earned">
+            <small>Money Earned</small>
+            <div class="amount__container">
+                <p id="earned__symbol">Ksh.</p>
+                <span id="amount__earned">1,000,000</span>
+            </div>
+        </div> 
+        <div class="number" id="available">
+            <small>Money Available</small>
+            <div class="amount__container">
+                <p>Ksh.</p>
+                <span id="amount__available">1,000,000</span>
+            </div>
+        </div> 
+        <div class="number" id="spent">
+            <small>Money Spent</small>
+            <div class="amount__container">
+                <p id="spent__symbol">Ksh.</p>
+                <span id="amount__spent">1,000,000</span>
+            </div>
+        </div> 
+        </div>
+
+        <div class="input__area">
+            <input type="text" id="description" placeholder="Description">
+            <input type="number" id="amount" placeholder="Amount">
+        </div>
+
+        <div class="buttons__area">
+            <button id="add__income">Add Income</button>
+            <button id="add__expense">Add Expense</button>
+        </div>
+
+        <div class="items__container">
+            <div id="income__container" class="container">
+                <h2>Income</h2>
+
+                <div class="item income">
+                    <h4>Stuff Sold</h4>
+                    <div class="item__income">
+                        <p class="symbol">Ksh.</p>
+                        <span class="income__amount">1500000</span>
+                    </div>
+                    <i class="fa fa-trash-alt"></i>
+                </div>
+            </div>
+
+            <div id="expenses__container" class="container">
+                <h4>Expenses</h4>
+
+                <div class="item expense">
+                    <h4>Stuff Bought</h4>
+                    <div class="item__expense">
+                        <p class="symbol">Ksh</p>
+                        <span class="expense__amount">2,000,000</span>
+                    </div>
+                    <i class="fa fa-trash-alt"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
